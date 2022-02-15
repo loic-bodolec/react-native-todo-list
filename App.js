@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Keyboard, ScrollView, StyleSheet, Text, View } from 'react-native';
 import TaskInputField from './components/TaskInputField';
 import TaskItem from './components/TaskItem';
@@ -10,27 +10,25 @@ export default function App() {
     if (task == null) return;
     setTasks([...tasks, task]);
     Keyboard.dismiss();
-  }
+  };
 
   const deleteTask = (deleteIndex) => {
     setTasks(tasks.filter((value, index) => index != deleteIndex));
-  }
+  };
 
   return (
     <View style={styles.container}>
-        <Text style={styles.heading}>TODO LIST</Text>
+      <Text style={styles.heading}>TODO LIST</Text>
       <ScrollView style={styles.scrollView}>
-        {
-        tasks.map((task, index) => {
+        {tasks.map((task, index) => {
           return (
             <View key={index} style={styles.taskContainer}>
-              <TaskItem index={index + 1} task={task} deleteTask={() => deleteTask(index)}/>
+              <TaskItem index={index + 1} task={task} deleteTask={() => deleteTask(index)} />
             </View>
           );
-        })
-      }
+        })}
       </ScrollView>
-      <TaskInputField addTask={addTask}/>
+      <TaskInputField addTask={addTask} />
     </View>
   );
 }
@@ -38,7 +36,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4b94a6',
+    backgroundColor: '#4b94a6'
   },
   heading: {
     color: '#fff',
@@ -46,12 +44,12 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginTop: 50,
     marginBottom: 10,
-    marginLeft: 20,
+    marginLeft: 20
   },
   scrollView: {
-    marginBottom: 70,
+    marginBottom: 70
   },
   taskContainer: {
-    marginTop: 20,
+    marginTop: 20
   }
 });
